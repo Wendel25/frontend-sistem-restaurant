@@ -2,18 +2,18 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
-import styles from "../styles/home.module.scss";
-import logo from "../styles/img/logo.png";
+import styles from "../../styles/home.module.scss";
+import logo from "../../styles/img/logo.png";
 
-import { Input } from "../components/ui/Input";
-import { Button } from "../components/ui/Button";
-import { FaEnvelope, FaKey } from "react-icons/fa";
+import { Input } from "./../../components/ui/Input/index";
+import { Button } from "@/components/ui/Button";
+import { FaUser, FaKey, FaEnvelope } from "react-icons/fa";
 
-export default function Home() {
+export default function Signup() {
   return (
     <>
       <Head>
-        <title>CoddeWave - Faça seu login</title>
+        <title>CoddeWave - Criar conta</title>
       </Head>
 
       <div className={styles.container}>
@@ -25,14 +25,23 @@ export default function Home() {
         />
 
         <div className={styles.login}>
+          <h1>Criar sua conta</h1>
           <form>
             <div className={styles.containerFields}>
+              <div className={styles.fields}>
+                <div className={styles.containerIcon}>
+                  <FaUser className={styles.icon} />
+                </div>
+                <Input placeholder="Digite seu nome" type="text" />
+              </div>
+
               <div className={styles.fields}>
                 <div className={styles.containerIcon}>
                   <FaEnvelope className={styles.icon} />
                 </div>
                 <Input placeholder="Digite seu email" type="text" />
               </div>
+
               <div className={styles.fields}>
                 <div className={styles.containerIcon}>
                   <FaKey className={styles.icon} />
@@ -42,12 +51,12 @@ export default function Home() {
             </div>
 
             <Button type="submit" loading={false}>
-              Acessar
+              Cadastrar
             </Button>
           </form>
 
-          <Link href="/signup" className={styles.text}>
-            Cadastrar
+          <Link href="/" className={styles.text}>
+            Já possui conta? Faça login
           </Link>
         </div>
       </div>

@@ -1,0 +1,119 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.img {
+    filter: drop-shadow(8px 8px 4px #ffffff21);
+    animation: fadeUp 2.8s;
+}
+
+.login {
+    margin-top: 2rem;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    background-color: var(--white);
+    padding: 3rem 1.5rem;
+    border-radius: 20px;
+
+    h1{
+        color: var(--blue);
+        padding-bottom: 1rem;
+        margin-top: -20px;
+    }
+
+    form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        animation: fadeLeft 2.5s;
+
+        .containerFields {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+
+            .fields {
+                display: flex;
+                align-items: center;
+
+                .containerIcon {
+                    height: 40px;
+                    background-color: var(--blue);
+                    border-radius: 0.5rem 0 0 0.5rem;
+                    margin-top: -16px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .icon {
+                    width: 40px;
+                    height: 18px;
+                    padding: 0 0.5rem;
+                    color: var(--white);
+                }
+
+                input {
+                    flex-grow: 1;
+                    padding: 0.5rem;
+                }
+            }
+        }
+    }
+
+    form button {
+        height: 40px;
+        font-size: 1.2rem;
+        animation: fadeLeft 2s;
+    }
+}
+
+.text {
+    margin-top: 1rem;
+    color: var(--blue);
+    cursor: pointer;
+    margin-bottom: -20px;
+    animation: fadeLeft 2s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(-550px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(20px);
+    }
+}
+
+@keyframes fadeLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-550px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(30px);
+    }
+}
+
+@media (max-width: 620px) {
+    .container {
+        margin: 0 40px;
+    }
+
+    .login {
+        width: 100%;
+    }
+}
