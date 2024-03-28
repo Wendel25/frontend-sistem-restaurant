@@ -1,0 +1,51 @@
+.headerContainer{
+    height: 5rem;
+}
+
+.headerContent{
+    max-width: 1120px;
+    height: 5rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .img{
+        cursor: pointer;
+    }
+
+    nav{
+        display: flex;
+        align-items: center;
+
+        a{
+            color: var(--white);
+            padding: 0 0.5rem;
+            display: inline-block;
+            position: relative;
+            transition: color, transform 0.5s;
+            font-size: 18px;
+
+            & + a{
+                margin-left: 2rem;
+            }
+
+            &:hover{
+                color: var(--blue);
+                transform: scale(1.2);
+            }
+        }
+
+        button{
+            margin-left: 2rem;
+            background-color: transparent;
+            border: 0;
+            transition: transform 0.3s;
+
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+    }
+}
