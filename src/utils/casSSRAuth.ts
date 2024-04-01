@@ -1,21 +1,19 @@
-// Página de quem está logado
-
-import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import { parseCookies, destroyCookie } from 'nookies';
+import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
+import { parseCookies, destroyCookie } from 'nookies'
 import { AuthTokenError } from '../services/errors/AuthTokenError'
 
-export function casSSRAuth<P>(fn: GetServerSideProps<P>) {
+export function canSSRAuth<P>(fn: GetServerSideProps<P>) {
     return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
-
         const cookies = parseCookies(ctx);
 
         const token = cookies['@token'];
+        const name = cookies['@name'];
 
         if (!token) {
             return {
                 redirect: {
                     destination: '/',
-                    permanent: false
+                    permanent: false,
                 }
             }
         }
@@ -25,6 +23,7 @@ export function casSSRAuth<P>(fn: GetServerSideProps<P>) {
         } catch (err) {
             if (err instanceof AuthTokenError) {
                 destroyCookie(ctx, '@token');
+                destroyCookie(ctx, '@name');
 
                 return {
                     redirect: {
@@ -32,6 +31,7 @@ export function casSSRAuth<P>(fn: GetServerSideProps<P>) {
                         permanent: false
                     }
                 }
+
             }
         }
     }

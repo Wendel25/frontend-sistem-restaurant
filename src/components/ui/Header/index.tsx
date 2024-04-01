@@ -27,6 +27,10 @@ export function Header() {
         </Link>
 
         <nav>
+          <Link href={"/payment"} legacyBehavior>
+            <a>Caixa</a>
+          </Link>
+
           <Link href={"/category"} legacyBehavior>
             <a>Categoria</a>
           </Link>

@@ -1,3 +1,4 @@
+import { canSSRAuth } from "@/utils/casSSRAuth";
 import { useState, FormEvent } from "react";
 import Head from "next/head";
 import { Header } from "@/components/ui/Header";
@@ -6,6 +7,8 @@ import { toast } from "react-toastify";
 import styles from "./styles.module.scss";
 
 import { setupAPIClient } from "@/services/api";
+
+import { Input } from '@/components/ui/InputField'
 
 export default function Category() {
   const [name, setName] = useState("");
@@ -51,7 +54,7 @@ export default function Category() {
           <h1>Cadastrar categorias</h1>
 
           <form className={styles.form} onSubmit={handleSubmit}>
-            <input
+            <Input
               type="text"
               placeholder="Digite a categoria"
               value={name}
@@ -65,3 +68,9 @@ export default function Category() {
     </>
   );
 }
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});

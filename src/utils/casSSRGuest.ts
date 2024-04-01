@@ -1,9 +1,7 @@
-// Página de quem não está logado
+import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
+import { parseCookies } from 'nookies'
 
-import { GetServerSideProps, GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import { parseCookies } from 'nookies';
-
-export function casSSRGuest<P>(fn: GetServerSideProps<P>) {
+export function canSSRGuest<P>(fn: GetServerSideProps<P>) {
     return async (ctx: GetServerSidePropsContext): Promise<GetServerSidePropsResult<P>> => {
 
         const cookies = parseCookies(ctx);
@@ -11,12 +9,12 @@ export function casSSRGuest<P>(fn: GetServerSideProps<P>) {
         if (cookies['@token']) {
             return {
                 redirect: {
-                    destination: '/dashboard',
-                    permanent: false
+                    destination: '/requests',
+                    permanent: false,
                 }
             }
         }
 
-        return await fn(ctx)
+        return await fn(ctx);
     }
 }

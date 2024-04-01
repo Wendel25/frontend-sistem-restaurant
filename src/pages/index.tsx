@@ -15,7 +15,7 @@ import { Button } from "../components/ui/Button";
 
 import { AuthContext } from "../contexts/AuthContext";
 
-import { casSSRGuest } from "../utils/casSSRGuest";
+import { canSSRGuest } from "../utils/casSSRGuest";
 
 export default function Home() {
   const { signup } = useContext(AuthContext);
@@ -102,7 +102,7 @@ export default function Home() {
   );
 }
 
-export const getServerSideProps = casSSRGuest(async (ctx) => {
+export const getServerSideProps = canSSRGuest(async (ctx) => {
   return {
     props: {},
   };

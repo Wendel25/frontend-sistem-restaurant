@@ -33,6 +33,7 @@ export const AuthContext = createContext({} as AuthContextData);
 export function signOut() {
   try {
     destroyCookie(undefined, "@token");
+    destroyCookie(undefined, "@name");
     Router.push("/");
   } catch {
     console.log("Erro ao deslogar");
