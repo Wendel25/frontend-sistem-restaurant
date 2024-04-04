@@ -42,7 +42,6 @@ export default function Product({ categoryList }: CategoryProps) {
   }
 
   function handleChangeCategory(e) {
-    //console.log('Categoria selecionada', categories[e.target.value]);
     setCategorySelected(e.target.value);
   }
 
@@ -52,7 +51,7 @@ export default function Product({ categoryList }: CategoryProps) {
     try {
       const data = new FormData();
 
-      if (name === "" || price === "" || description === "") {
+      if (name === "" || price === "") {
         toast.error("Preecha os campos obrigatórios");
         return;
       }
@@ -73,11 +72,21 @@ export default function Product({ categoryList }: CategoryProps) {
       toast.error("Erro ao cadastrar");
     }
 
-    setName('');
-    setPrice('');
-    setDescription('');
+    setName("");
+    setPrice("");
+    setDescription("");
     setImageAvatar(null);
-    setAvatarUrl('');
+    setAvatarUrl("");
+  }
+
+  function handlePriceChange(e: ChangeEvent<HTMLInputElement>) {
+    const newValue = e.target.value.replace(/[^\d]/g, "");
+    const numericValue = parseFloat(newValue) / 100;
+    const formattedValue = numericValue.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    setPrice(formattedValue);
   }
 
   return (
@@ -138,7 +147,7 @@ export default function Product({ categoryList }: CategoryProps) {
               type="text"
               placeholder="Digite o valor"
               value={price}
-              onChange={(e) => setPrice(e.target.value)}
+              onChange={handlePriceChange}
             />
 
             <TextArea
