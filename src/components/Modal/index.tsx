@@ -59,10 +59,7 @@ export function ModalOrder({
             </div>
 
             <span className={styles.descriptionValue}>
-              {parseFloat(item.product.price).toLocaleString("pt-BR", {
-                style: "currency",
-                currency: "BRL",
-              })}
+              <span>R$ {item.product.price}</span>
               <div className={styles.tags}></div>
             </span>
           </section>
