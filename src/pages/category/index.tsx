@@ -1,46 +1,18 @@
+import { useState } from 'react';
 import { canSSRAuth } from "@/utils/casSSRAuth";
-import { useState, FormEvent } from "react";
 import Head from "next/head";
-import { Header } from "@/components/ui/Header";
-import { toast } from "react-toastify";
 
 import styles from "./styles.module.scss";
+import { Header } from "@/components/ui/Header";
+import { TableCategories } from "@/components/Category/TableCategories";
+import { ModalCreateNewCategory } from "@/components/Category/CreateNew";
 
-import { setupAPIClient } from "@/services/api";
+const Category = () => {
+  const [categories, setCategories] = useState([]);
 
-import { Input } from '@/components/ui/InputField'
-
-export default function Category() {
-  const [name, setName] = useState("");
-
-  async function handleSubmit(event: FormEvent) {
-    event.preventDefault();
-
-    if (name === "") {
-      toast.error("Preencha sua categoria");
-      return;
-    }
-
-    const apiCliente = setupAPIClient();
-    try {
-      await apiCliente.post("/new-category", {
-        name: name,
-      });
-
-      toast.success("Categoria cadastrada!");
-      setName("");
-    } catch (error) {
-      if (
-        error.response &&
-        error.response.data.error === "Category already exists"
-      ) {
-        toast.error("Esta categoria já existe.");
-      } else {
-        console.error("Erro ao cadastrar categoria:", error);
-        toast.error("Erro ao cadastrar categoria!");
-      }
-    }
-  }
+  const handleCategoryCreated = (newCategory) => {
+    setCategories([...categories, newCategory]);
+  };
 
   return (
     <>
@@ -51,23 +23,19 @@ export default function Category() {
         <Header />
 
         <main className={styles.container}>
-          <h1>Cadastrar categorias</h1>
+          <div className={styles.title}>
+            <h1>Categorias</h1>
+            <ModalCreateNewCategory onCategoryCreated={handleCategoryCreated}/>
+          </div>
 
-          <form className={styles.form} onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              placeholder="Digite a categoria"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-
-            <button type="submit">Cadastrar</button>
-          </form>
+          <TableCategories getCategoriesTable={categories} />
         </main>
       </div>
     </>
   );
-}
+};
+
+export default Category;
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
   return {

@@ -90,7 +90,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       api.defaults.headers["Authorization"] = `Bearer ${token}`;
 
       Router.push("/requests");
-      toast.success(`Bem vindo, ${name}`);
+      await toast.success(`Bem vindo, ${name}`);
     } catch (err) {
       toast.error("Erro ao autenticar!");
       console.log("Erro ao acessar", err);

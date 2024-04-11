@@ -1,0 +1,84 @@
+.table {
+    border-radius: 0.5rem;
+    background-color: var(--dark-700);
+}
+
+// .fixedHeader {
+//     position: sticky;
+//     top: 0;
+//     z-index: 1;
+// }
+
+// .fixedHeader::before {
+//     content: "";
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     bottom: 0;
+//     background-color: rgb(255, 255, 255);
+//     filter: blur(4px);
+//     z-index: -1;
+// }
+
+.titleTable {
+    .title {
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--white);
+
+        .alingTitle {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    }
+
+}
+
+.contentData {
+    .data {
+        font-size: 1.1rem;
+        text-align: center;
+        color: var(--white);
+    }
+
+    .buttonDelete {
+        text-align: center;
+    }
+
+    .rowHover:hover {
+        background-color: var(--dark-900);
+        cursor: pointer;
+    }
+}
+
+.messageAlert {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.titleModalConfirmation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.loadingIcon {
+    cursor: not-allowed;
+    animation: animate 2s infinite;
+}
+
+@keyframes animate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,5 +1,4 @@
 .container {
-    max-width: 720px;
     margin: 4rem auto;
     padding: 0 2rem;
     display: flex;
@@ -8,6 +7,10 @@
 
     h1 {
         color: var(--white);
+    }
+
+    .content{
+        margin-top: 1.5rem;
     }
 }
 

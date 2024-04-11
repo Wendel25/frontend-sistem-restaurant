@@ -8,21 +8,11 @@
 
     h1{
         color: var(--white);
+        margin-bottom: 2rem;
     }
-}
 
-.form{
-    display: flex;
-    flex-direction: column;
-    margin: 1rem 0;
-
-    button{
-        border: 0;
-        height: 40px;
-        background-color: var(--green);
-        border-radius: 0.5rem;
-        color: var(--dark-700);
-        font-weight: bold;
-        font-size: 1.2rem;
+    .title{
+        display: flex;
+        justify-content: space-between;
     }
 }
