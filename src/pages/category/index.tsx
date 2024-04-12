@@ -23,8 +23,8 @@ const Category = () => {
         <Header />
 
         <main className={styles.container}>
-          <div className={styles.title}>
-            <h1>Categorias</h1>
+          <div className='flex justify-between'>
+            <h1 className='text-white pb-8 text-3xl font-bold'>Categorias</h1>
             <ModalCreateNewCategory onCategoryCreated={handleCategoryCreated}/>
           </div>
 
