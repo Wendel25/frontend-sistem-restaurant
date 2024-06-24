@@ -2,7 +2,10 @@ import Head from "next/head";
 import { Header } from "@/components/ui/Header";
 import { canSSRAuth } from "@/utils/casSSRAuth";
 import styles from "./styles.module.scss";
+
 import { ListProduct } from "@/components/Products";
+import AddIcon from '@mui/icons-material/Add';
+import Button from '@mui/material/Button';
 
 export default function Product() {
   return (
@@ -14,8 +17,13 @@ export default function Product() {
         <Header />
 
         <main className={styles.container}>
-          <div className={styles.title}>
+          <div className='flex justify-between'>
             <h1 className='text-white text-3xl font-bold'>Produtos</h1>
+
+            <Button color="success" variant="contained" className='flex items-center gap-2'>
+              <AddIcon />
+              Produto
+            </Button>
           </div>
 
           <div className='mt-6 '>

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { setupAPIClient } from "@/services/api";
+
+import { Category } from "../interface/Category";
+
 import styles from "./styles.module.scss";
 
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -37,7 +40,7 @@ export function ListCategories({ onCategoryChange }) {
         { id: "all", label: "Todos Produtos" },
         { id: "active", label: "Produtos Ativos" },
         { id: "inactive", label: "Produtos Desativados" },
-        ...categories.map((category) => ({
+        ...categories.map((category: Category) => ({
           id: category.id,
           label: category.name,
         })),

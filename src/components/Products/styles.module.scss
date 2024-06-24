@@ -1,0 +1,45 @@
+.cardTwoResponsive{
+    max-height: 72vh;
+    overflow: auto;
+}
+
+@media (max-width: 768px) {
+    .sectionProductsResponsive {
+        flex-direction: column;
+    }
+
+    .cardOneResponsive {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .cardTwoResponsive{
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .sectionProductsResponsive {
+        flex-direction: column;
+    }
+
+    .cardOneResponsive {
+        width: 100%;
+        margin-bottom: 3rem;
+    }
+
+    .cardTwoResponsive{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1300px) {
+    .cardOneResponsive {
+        margin-right: 1.5rem;
+    }
+
+    .cardTwoResponsive{
+        max-height: 90vh;
+        overflow: auto;
+    }
+}

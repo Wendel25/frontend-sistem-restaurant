@@ -7,7 +7,7 @@ import { Header } from "@/components/ui/Header";
 import { TableCategories } from "@/components/Category/TableCategories";
 import { ModalCreateNewCategory } from "@/components/Category/CreateNew";
 
-const Category = () => {
+export default function Category () {
   const [categories, setCategories] = useState([]);
 
   const handleCategoryCreated = (newCategory) => {
@@ -34,8 +34,6 @@ const Category = () => {
     </>
   );
 };
-
-export default Category;
 
 export const getServerSideProps = canSSRAuth(async (ctx) => {
   return {

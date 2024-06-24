@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { setupAPIClient } from "@/services/api";
 import styles from "./styles.module.scss";
+import { CategoriesTableProps } from "./interface/CategoriesTableProps";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -130,19 +131,19 @@ export function TableCategories({ getCategoriesTable }) {
             </TableRow>
           </TableHead>
           <TableBody className={styles.contentData}>
-            {categories.map((category) => (
-              <TableRow key={category.id} className={styles.rowHover}>
-                <TableCell className={styles.data}>{category.name}</TableCell>
+            {categories.map((category: CategoriesTableProps) => (
+              <TableRow key={category?.id} className={styles.rowHover}>
+                <TableCell className={styles.data}>{category?.name}</TableCell>
                 <TableCell className={styles.data}>
-                  {category.amountProducts}
+                  {category?.amountProducts}
                 </TableCell>
                 <TableCell className={styles.buttonDelete}>
                   <Button
                     variant="contained"
-                    onClick={() => handleDelete(category.id)}
+                    onClick={() => handleDelete(category?.id)}
                     type="submit"
                     color="error"
-                    disabled={category.amountProducts > 0 || loading}
+                    disabled={parseFloat(category?.amountProducts) > 0 || loading}
                   >
                     {loading ? (
                       <div className={styles.loadingIcon}>

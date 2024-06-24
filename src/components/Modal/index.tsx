@@ -21,12 +21,6 @@ export function ModalOrder({
     },
   };
 
-  let total = 0;
-
-  order.forEach((item) => {
-    total += parseFloat(item.product.price.replace(",", "."));
-  });
-
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles}>
       <div className={styles.header}>
@@ -40,14 +34,14 @@ export function ModalOrder({
         </button>
 
         <span className={styles.table}>
-          Mesa: <strong>{order[0].Order.table}</strong>
+          Mesa: 
         </span>
       </div>
 
       <div className={styles.container}>
         <h2>Detalhes do pedido</h2>
 
-        {order.map((item) => (
+         {order.map((item) => (
           <section key={item.id} className={styles.containerItem}>
             <div className={styles.containerItemDescription}>
               <span>
@@ -65,7 +59,7 @@ export function ModalOrder({
           </section>
         ))}
 
-        <div className={styles.containerValue}>
+        {/*<div className={styles.containerValue}>
           <span className={styles.total}>Total:</span>
           <span className={styles.value}>R$ {total.toFixed(2)}</span>
         </div>
@@ -75,7 +69,7 @@ export function ModalOrder({
           className={styles.buttonOrder}
         >
           Concluir Pedido
-        </button>
+        </button> */}
       </div>
     </Modal>
   );
